@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Friendzy</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            💜 Friendzy
+        </div>
+
+        <nav>
+
+            <button onclick="showPage('home')">
+                🏠 Home
+            </button>
+
+            <button onclick="showPage('discover')">
+                🔎 Discover
+            </button>
+
+            <button onclick="showPage('friends')">
+                👥 Friends
+            </button>
+
+            <button onclick="showPage('messages')">
+                💬 Messages
+            </button>
+
+            <button onclick="showPage('assistant')">
+                🤖 AI Assistant
+            </button>
+
+            <button onclick="showPage('profile')">
+                👤 Profile
+            </button>
+
+        </nav>
+
+        <button class="dark-button" onclick="toggleDarkMode()">
+            🌙 Dark Mode
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content">
+
+
+        <!-- HOME -->
+
+        <section id="home" class="page active">
+
+            <div class="topbar">
+
+                <div>
+                    <h1>Good afternoon 👋</h1>
+
+                    <p>
+                        Welcome back to Friendzy.
+                    </p>
+                </div>
+
+                <div class="notification">
+                    🔔
+                </div>
+
+            </div>
+
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <h2>
+                        Find people who understand you. 💜
+                    </h2>
+
+                    <p>
+                        Discover new friendships,
+                        share interests and create memories.
+                    </p>
+
+                    <button onclick="showPage('discover')">
+                        Discover Friends
+                    </button>
+
+                </div>
+
+                <div class="welcome-emoji">
+                    🫶
+                </div>
+
+            </div>
+
+
+            <h2 class="section-title">
+                Your Friendzy
+            </h2>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span>👥</span>
+                    <h3 id="friendCount">12</h3>
+                    <p>Friends</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>💬</span>
+                    <h3>5</h3>
+                    <p>Messages</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>❤️</span>
+                    <h3>8</h3>
+                    <p>Requests</p>
+                </div>
+
+            </div>
+
+
+            <div class="quote-card">
+
+                <p>
+                    "A true friend knows your story
+                    and still chooses to stay."
+                </p>
+
+                <span>💜 Friendzy</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- DISCOVER -->
+
+        <section id="discover" class="page">
+
+            <h1>Discover People 🔎</h1>
+
+            <p>
+                Find people with similar interests.
+            </p>
+
+
+            <input class="search" id="friendSearch" type="text" placeholder="Search people..." onkeyup="searchPeople()">
+
+
+            <div class="people-grid">
+
+
+                <div class="person-card">
+
+                    <div class="person-avatar">
+                        A
+                    </div>
+
+                    <h3>Ananya</h3>
+
+                    <p>🎨 Art • 🎵 Music</p>
+
+                    <button onclick="sendRequest(this)">
+                        Add Friend
+                    </button>
+
+                </div>
+
+
+                <div class="person-card">
+
+                    <div class="person-avatar">
+                        R
+                    </div>
+
+                    <h3>Riya</h3>
+
+                    <p>📚 Books • 🎬 Movies</p>
+
+                    <button onclick="sendRequest(this)">
+                        Add Friend
+                    </button>
+
+                </div>
+
+
+                <div class="person-card">
+
+                    <div class="person-avatar">
+                        K
+                    </div>
+
+                    <h3>Karan</h3>
+
+                    <p>🎮 Gaming • ⚽ Sports</p>
+
+                    <button onclick="sendRequest(this)">
+                        Add Friend
+                    </button>
+
+                </div>
+
+
+                <div class="person-card">
+
+                    <div class="person-avatar">
+                        S
+                    </div>
+
+                    <h3>Sara</h3>
+
+                    <p>📷 Photography • ✈️ Travel</p>
+
+                    <button onclick="sendRequest(this)">
+                        Add Friend
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FRIENDS -->
+
+        <section id="friends" class="page">
+
+            <h1>My Friends 👥</h1>
+
+            <div id="friendList">
+
+                <div class="friend-row">
+
+                    <div class="mini-avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <h3>Ananya</h3>
+                        <p>Online</p>
+                    </div>
+
+                    <button onclick="showPage('messages')">
+                        Message
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MESSAGES -->
+
+        <section id="messages" class="page">
+
+            <h1>Messages 💬</h1>
+
+            <div class="chat-container">
+
+                <div class="chat-header">
+                    💜 Ananya
+                    <span>● Online</span>
+                </div>
+
+
+                <div id="chatBox" class="chat-box">
+
+                    <div class="received">
+                        Hey! How are you? 😊
+                    </div>
+
+                    <div class="sent">
+                        I'm good! What about you?
+                    </div>
+
+                    <div class="received">
+                        I'm doing great! 💜
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input">
+
+                    <input id="chatMessage" type="text" placeholder="Write a message..." onkeydown="chatEnter(event)">
+
+                    <button onclick="sendChat()">
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI ASSISTANT -->
+
+        <section id="assistant" class="page">
+
+            <div class="ai-container">
+
+                <div class="ai-header">
+
+                    <div class="ai-icon">
+                        🤖
+                    </div>
+
+                    <div>
+                        <h2>Friendzy AI</h2>
+                        <p>Your friendly companion</p>
+                    </div>
+
+                </div>
+
+
+                <div id="aiChat" class="ai-chat">
+
+                    <div class="ai-message">
+
+                        <strong>🤖 Friendzy AI</strong>
+
+                        <p>
+                            Hey! I'm here to listen,
+                            talk and help you navigate
+                            friendships. 💜
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-input">
+
+                    <input id="aiMessage" type="text" placeholder="Talk to Friendzy AI..." onkeydown="aiEnter(event)">
+
+                    <button onclick="sendAI()">
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section id="profile" class="page">
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">
+                    D
+                </div>
+
+                <h1>Your Profile</h1>
+
+                <p>
+                    Making connections and memories 💜
+                </p>
+
+
+                <div class="interests">
+
+                    <span>🎵 Music</span>
+                    <span>📚 Books</span>
+                    <span>🎬 Movies</span>
+                    <span>✈️ Travel</span>
+
+                </div>
+
+
+                <button onclick="editProfile()">
+                    Edit Profile
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
